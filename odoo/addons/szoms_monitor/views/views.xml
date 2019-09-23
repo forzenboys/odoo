@@ -1,0 +1,184 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="zabbix_group_list">
+      <field name="name">群组信息</field>
+      <field name="model">zabbix_group</field>
+      <field name="arch" type="xml">
+        <tree create="false" editable="bottom">
+          <field name="name"/>
+          <field name="group_id"/>
+          <field name="parent_id" options="{'no_create_edit': 1}"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="zabbix_host_list">
+      <field name="name">host信息</field>
+      <field name="model">zabbix_host</field>
+      <field name="arch" type="xml">
+        <tree szpdc_child="group_id" szpdc_model="zabbix_group" szpdc_parent="parent_id" create="false">
+          <field name="name"/>
+          <field name="host_id"/>
+          <field name="group_id"/>
+          <field name="host_ip"/>
+          <button name="action_view" type="object" string="查看监控项"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="zabbix_item_list_tree">
+      <field name="name">监控项</field>
+      <field name="model">zabbix_item_list</field>
+      <field name="arch" type="xml">
+        <tree  create="false">
+          <field name="name"/>
+          <field name="itemid"/>
+          <field name="hostid"/>
+          <field name="key"/>
+          <field name="monitor_name"/>
+          <button name="application_item" type="object" string="关联"/>
+          <button name="action_view" type="object" string="查看历史数据"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="zabbix_item_data_tree">
+      <field name="name">监控数据</field>
+      <field name="model">zabbix_item_data</field>
+      <field name="arch" type="xml">
+        <tree create="false">
+          <field name="name"/>
+          <field name="itemid"/>
+          <field name="hostid"/>
+          <field name="clock" widget="tree_date"/>
+          <field name="value_min"/>
+          <field name="value_avg"/>
+          <field name="value_max"/>
+          <!--<button name="numpy" type="object" string="numpy"/>-->
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="zabbix_application_item_form">
+      <field name="name">监控项应用选择</field>
+      <field name="model">application_item</field>
+      <field name="arch" type="xml">
+        <form editable="bottom">
+          <form>
+            <sheet id="sheet">
+              <group>
+                <field name="name" id="name"/>
+              </group>
+            </sheet>
+            <footer style="text-align:center;">
+              <button type="object" string="应用" name="application" onclick="test()" />
+              <progress max="100" value="0" id="pg"  style="display:none" ></progress>
+            </footer>
+              <style>
+                progress{
+                    width: 168px;
+                    height: 5px;
+                    color:#f00;
+                    background:#EFEFF4;
+                    border-radius: 0.1rem;
+                }
+                /* 表示总长度背景色 */
+                progress::-webkit-progress-bar{
+                    background-color: #f2f2f2;
+                    border-radius: 0.2rem;
+                }
+                /* 表示已完成进度背景色 */
+                progress::-webkit-progress-value{
+                      background: #a21211;
+                      border-radius: 0.2rem;
+                }
+              </style>
+              <script>
+                var name=document.getElementById('name');
+                console.log(name.value)
+                function test(){
+                 var pg=document.getElementById('pg');
+                 var btn=document.getElementById('btn');
+                 pg.style="text-align:center;"
+                 setInterval(function(e){
+                      if(pg.value!=100) pg.value++;
+                      else pg.value=0;
+                },100);
+                }
+              </script>
+          </form>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="zabbix_settings_from">
+      <field name="name">设置</field>
+      <field name="model">settings_configure</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet style="width:80%;">
+            <notebook>
+              <page string="监控配置项">
+                <group>
+                <field name="url"/>
+                <field name="username"/>
+                <field name="password"/>
+                <field name="switch" widget="boolean_toggle"/>
+                <field name="group" widget="many2many_tags"/>
+              </group>
+              </page>
+              <page string="微信监控项">
+                <group>
+                  <field name="secret"/>
+                  <field name="corpid"/>
+                  <field name="agentid"/>
+                  <field name="touser" />
+                </group>
+              </page>
+            </notebook>
+
+            <footer style="text-align:center;">
+              <button type="object" string="同步主机数据" confirm="确认同步主机吗？" name="get_host_data" onclick="test()" />
+              <progress max="500" value="0" id="pg"  style="display:none" ></progress>
+            </footer>
+          </sheet>
+          <style>
+            progress{
+                width: 168px;
+                height: 5px;
+                color:#f00;
+                background:#EFEFF4;
+                border-radius: 0.1rem;
+            }
+            /* 表示总长度背景色 */
+            progress::-webkit-progress-bar{
+                background-color: #f2f2f2;
+                border-radius: 0.2rem;
+            }
+            /* 表示已完成进度背景色 */
+            progress::-webkit-progress-value{
+                  background: #a21211;
+                  border-radius: 0.2rem;
+            }
+          </style>
+          <script>
+            var name=document.getElementById('name');
+            console.log(name.value)
+            function test(){
+             var pg=document.getElementById('pg');
+             var btn=document.getElementById('btn');
+             pg.style="text-align:center;"
+             setInterval(function(e){
+                  if(pg.value!=500) pg.value++;
+                  else pg.value=0;
+            },100);
+            }
+          </script>
+        </form>
+      </field>
+    </record>
+
+
+  </data>
+</odoo>

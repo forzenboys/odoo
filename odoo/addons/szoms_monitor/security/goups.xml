@@ -1,0 +1,19 @@
+<odoo>
+    <data>
+        <record id="module_category_zabbix_users" model="ir.module.category">
+            <field name="name">监控系统</field>
+        </record>
+
+        <record id="zabbix_users" model="res.groups">
+            <field name="name">监控系统普通用户</field>
+            <field name="category_id" ref="szoms_monitor.module_category_zabbix_users"/>
+        </record>
+
+        <record id="zabbix_manager" model="res.groups">
+            <field name="name">监控系统总管理员</field>
+            <field name="category_id" ref="szoms_monitor.module_category_zabbix_users"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+
+    </data>
+</odoo>

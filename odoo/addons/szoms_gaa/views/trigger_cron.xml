@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="trigger_cron_view" model="ir.ui.view">
+        <field name="name">Trigger Cron</field>
+        <field name="model">trigger.cron</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <style>
+                        .nav{
+                        padding:20px;
+                        }
+
+                        .nav button {
+                        margin-right: 10px;
+                        padding: 10px;
+                        border:1px #00A09D solid;
+                        }
+                        .salary_accounting_main .block {
+                        margin-bottom: 40px;
+                        }
+                        .salary_accounting_main .block h3 {
+                        margin-bottom: 10px;
+                        }
+                    </style>
+                    <h2 style="margin-bottom:20px;font-weight:bold;">同步数据</h2>
+                    <div class="nav">
+                        <button name="sync_event" string="同步历史事件" type="object"/>
+                    </div>
+                    <div class="nav">
+                        <button name="open_cron" string="定时同步问题事件" type="object"/>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <act_window id="trigger_cron_action" name="同步数据"
+                res_model="trigger.cron"
+                view_mode="form" target="current"/>
+    <menuitem id="menu_trigger_cron" name="同步数据" action="trigger_cron_action" parent="zabbix_menu_root" sequence="5"/>
+</odoo>

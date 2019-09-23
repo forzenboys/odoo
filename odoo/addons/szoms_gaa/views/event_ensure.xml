@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="zabbix_envent_ensure_wizard" model="ir.ui.view">
+        <field name="name">问题更新</field>
+        <field name="model">zabbix.ensure</field>
+        <field name="arch" type="xml">
+           <form string="问题更新">
+               <sheet>
+                   <group>
+                       <group>
+                           <field name="message"/>
+                           <field name="ensure"/>
+                       </group>
+                       <group>
+                           <field name="severity"/>
+                           <field name="close"/>
+                       </group>
+                   </group>
+                   <button string="更新问题"
+                           type="object"
+                           name="eventchange"
+                           />
+                   <button string="取消"  special="cancel"/>
+               </sheet>
+               <!--<footer>-->
+                   <!--<button string="更新问题"-->
+                           <!--type="object"-->
+                           <!--name="eventchange"-->
+                           <!--/>-->
+                   <!--<button string="取消"  special="cancel"/>-->
+               <!--</footer>-->
+           </form>
+        </field>
+    </record>
+
+    <act_window id="action_wizard_event_ensure"
+                name="更新问题"
+                res_model="zabbix.ensure"
+                view_mode="form"
+                target="new"/>
+
+</odoo>

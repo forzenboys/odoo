@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <!--图表的js引用-->
+        <template id="hightchart_js" name="My Chart js" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <script src="/szoms_monitor/static/js/lib/chart/hightstrok.js"></script>
+                <script src="/szoms_monitor/static/js/lib/chart/highchart_theme.js"></script>
+                <script src="/szoms_monitor/static/js/lib/chart/highcharts_china.js"></script>
+                <script src="/szoms_monitor/static/js/lib/chart/no_data_display.js"></script>
+            </xpath>
+        </template>
+        <!--tree视图时间戳日期转换-->
+        <template id="widget_date" name="My widget in tree" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <script src="/szoms_monitor/static/js/tree/tree_date.js"></script>
+            </xpath>
+        </template>
+
+        <!--form视图扩展-->
+        <template id="form_extend" name="My extend form" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <script src="/szoms_monitor/static/js/form/form_extend.js"></script>
+            </xpath>
+        </template>
+        <template id="assets_backend_bk" name="odoo_theme" inherit_id="web.assets_backend">
+          <xpath expr="." position="inside">
+          </xpath>
+        </template>
+    </data>
+</odoo>

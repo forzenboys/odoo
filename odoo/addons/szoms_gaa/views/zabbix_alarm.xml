@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="zabbix_alarm_list" model="ir.ui.view">
+        <field name="name">zabbix alarm list</field>
+        <field name="model">zabbix.alarm</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="priority"/>
+                <field name="interval_number"/>
+                <field name="interval_type"/>
+                <field name="recive_user"/>
+                <field name="types"/>
+            </tree>
+        </field>
+    </record>
+    <record id="zabbix_alarm_form" model="ir.ui.view">
+        <field name="name">zabbix alarm form</field>
+        <field name="model">zabbix.alarm</field>
+        <field name="arch" type="xml">
+            <form>
+                <!--<header>-->
+                    <!--<button name="test" string="发送邮件" type="object"/>-->
+                <!--</header>-->
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="priority"/>
+                            <field name="recive_user"/>
+                        </group>
+                        <group>
+                            <field name="interval_number"/>
+                            <field name="interval_type"/>
+                            <field name="types"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="zabbix_alarm_action" model="ir.actions.act_window">
+        <field name="name">告警配置</field>
+        <field name="res_model">zabbix.alarm</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <record id="zabbix_alarm_event_list" model="ir.ui.view">
+        <field name="name">zabbix alarm event list</field>
+        <field name="model">alarm.event</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="cron"/>
+                <field name="event_id"/>
+                <field name="severity"/>
+                <field name="recive_user"/>
+                <field name="types"/>
+            </tree>
+        </field>
+    </record>
+    <record id="zabbix_alarm_event_form" model="ir.ui.view">
+        <field name="name">zabbix alarm event form</field>
+        <field name="model">alarm.event</field>
+        <field name="arch" type="xml">
+            <form>
+                <!--<header>-->
+                    <!--<button name="test" string="发送邮件" type="object"/>-->
+                <!--</header>-->
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="event_id"/>
+                            <field name="recive_user"/>
+                        </group>
+                        <group>
+                            <field name="cron"/>
+                            <field name="severity"/>
+                            <field name="types"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="zabbix_alarm_event_action" model="ir.actions.act_window">
+        <field name="name">告警通知时间</field>
+        <field name="res_model">alarm.event</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="告警配置" id="zabbix_menu_alarm" action="zabbix_alarm_action" parent="zabbix_menu_root"/>
+    <menuitem name="告警通知" id="zabbix_menu_alarm_event" action="zabbix_alarm_event_action" parent="zabbix_menu_root"/>
+</odoo>

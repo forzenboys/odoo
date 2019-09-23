@@ -1,0 +1,56 @@
+.o_home_menu_background{
+    background: linear-gradient(to right bottom, #7c8284, #000000)
+}
+.o_main_navbar{
+    background-color:#2d2b2b;
+    border-bottom:1px solid #9e9898;
+}
+.btn-primary{
+    background-color:#524e61;
+    border-color:#9e9898;
+}
+.btn-secondary{
+ color:#908a8a;
+}
+.o_is_superuser .o_menu_systray{
+    background：repeating-linear-gradient(135deg, #443750, #ccc3d4 10px, #373435 10px, #373435 20px)
+}
+a{
+    color:#9881ab
+}
+.o_form_view > .o_form_sheet_bg > .o_form_sheet{
+    max-width:95%;
+    border-radius:1em;
+}
+body{
+    font-family:monospace;
+}
+.o_home_menu_background{
+    background: linear-gradient(to right bottom, #7c8284, #000000)
+}
+.highcharts-scrollbar-thumb{
+    fill: rgb(255, 255, 255);
+    stroke:rgb(255, 255, 255);
+    border-radius: 10%;
+}
+.highcharts-scrollbar-button{
+    fill: rgb(255, 255, 255)
+}
+.highcharts-navigator-handle .highcharts-navigator-handle-right{
+    fill: rgb(255, 255, 255)
+}
+.highcharts-scrollbar-track{
+    fill: rgb(200, 200, 200);
+    stroke:rgb(255,255,255);
+}
+.highcharts-graph{
+    stroke-width: 3px;
+}
+highcharts-legend-box{
+    fill:transparent;
+}
+@media (min-width: 768px){
+    .o_form_view .o_form_sheet_bg > .o_form_sheet{
+        margin:12px  auto 50px
+    }
+}

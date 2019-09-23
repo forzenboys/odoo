@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--<record id="network_device" model="zabbix.category">-->
+        <!--<field name="name">网络设备</field>-->
+    <!--</record>-->
+    <!--<record id="safe_device" model="zabbix.category">-->
+        <!--<field name="name">安全设备</field>-->
+    <!--</record>-->
+    <!--<record id="servers" model="zabbix.category">-->
+        <!--<field name="name">服务器</field>-->
+    <!--</record>-->
+    <!--<record id="store_device" model="zabbix.category">-->
+        <!--<field name="name">存储设备</field>-->
+    <!--</record>-->
+    <!--<record id="system" model="zabbix.category">-->
+        <!--<field name="name">业务系统</field>-->
+    <!--</record>-->
+    <!--<record id="interchanger" model="zabbix.category">-->
+        <!--<field name="name">交换机</field>-->
+        <!--<field name="parent_id" ref="network_device"/>-->
+    <!--</record>-->
+    <!--<record id="routers" model="zabbix.category">-->
+        <!--<field name="name">路由器</field>-->
+        <!--<field name="parent_id" ref="network_device"/>-->
+    <!--</record>-->
+    <!--<record id="wireless_control" model="zabbix.category">-->
+        <!--<field name="name">无线控制器</field>-->
+        <!--<field name="parent_id" ref="network_device"/>-->
+    <!--</record>-->
+    <!--<record id="firewall" model="zabbix.category">-->
+        <!--<field name="name">防火墙</field>-->
+        <!--<field name="parent_id" ref="safe_device"/>-->
+    <!--</record>-->
+    <!--<record id="AC" model="zabbix.category">-->
+        <!--<field name="name">AC</field>-->
+        <!--<field name="parent_id" ref="safe_device"/>-->
+    <!--</record>-->
+    <!--<record id="windows" model="zabbix.category">-->
+        <!--<field name="name">Windows</field>-->
+        <!--<field name="parent_id" ref="servers"/>-->
+    <!--</record>-->
+    <!--<record id="Linux" model="zabbix.category">-->
+        <!--<field name="name">Linux</field>-->
+        <!--<field name="parent_id" ref="servers"/>-->
+    <!--</record>-->
+    <record forcecreate="True" id="ir_cron_scheduler_action" model="ir.cron">
+        <field name="name">定时拉取告警数据</field>
+        <field name="model_id" ref="model_zabbix_trigger"/>
+        <field name="code">model.get_trigger()</field>
+        <field eval="True" name="active"/>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">minutes</field>
+        <field name="numbercall">-1</field>
+        <field eval="True" name="args"/>
+    </record>
+
+</odoo>

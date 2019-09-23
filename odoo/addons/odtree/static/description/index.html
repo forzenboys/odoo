@@ -1,0 +1,36 @@
+
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h4 class="oe_slogan">Usage</h4>
+		<div class="oe_span12">
+		Extending a listview or a kanbanview, and specify the value of new attributes :<br/>
+		categ_property,categ_model,categ_parent_key(optional) ;
+<p/>
+<h5>
+		An typical inherited view declaration looks like this:
+</h5>
+
+
+<p>
+	<span> </span>&lt;record id="view_employee_tree_with_dpttree" model="ir.ui.view"&gt;<br />
+<span> </span>&lt;field name="name"&gt;hr.employee.tree&lt;/field&gt;<br />
+<span> </span>&lt;field name="model"&gt;hr.employee&lt;/field&gt;<br />
+<span> </span>&lt;field name="inherit_id" ref="hr.view_employee_tree" /&gt;<br />
+<span> </span>&lt;field name="arch" type="xml"&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;xpath expr="//tree" position="attributes"&gt;<br />
+<span> </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;attribute name="szpdc_child"&gt;department_id&lt;/attribute&gt;&nbsp; <span style="color:#E53333;">&lt;----- the field relate to the tree Structure in the model</span><br />
+<span> </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;attribute name="szpdc_model"&gt;hr.department&lt;/attribute&gt;&nbsp; &nbsp; &nbsp;<span style="color:#E53333;">&lt;----- the model of the tree Structure</span><br />
+<span> </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;attribute name="szpdc_parent"&gt;parent_id&lt;/attribute&gt;&nbsp; &nbsp; <span style="color:#E53333;">&lt;----- (optional)if only want to get a single layer tree,do not specify a value for this attribute</span><br />
+<span> </span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/xpath&gt;<br />
+<span> </span>&lt;/field&gt;<br />
+<span> </span>&lt;/record&gt;
+</p>	
+		</div>
+
+    </div>
+</section>
+
+
+<section class="oe_container oe_separator">
+</section>

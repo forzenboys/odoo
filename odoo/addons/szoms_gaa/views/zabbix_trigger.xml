@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="zabbix_menu_root"  name="告警监控"/>
+    <record id="zabbix_trigger_list" model="ir.ui.view">
+        <field name="name">zabbix trigger list</field>
+        <field name="model">zabbix.trigger</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="trigger_id"/>
+                <field name="host_id"/>
+                <field name="descrtiption"/>
+                <field name="priority"/>
+                <field name="last_change"/>
+            </tree>
+        </field>
+    </record>
+    <record id="zabbix_trigger_form" model="ir.ui.view">
+        <field name="name">zabbix trigger form</field>
+        <field name="model">zabbix.trigger</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="event_change" string="更新问题" type="object"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <!--<field name="objectid"/>-->
+                            <field name="trigger_id"/>
+                            <field name="host_id"/>
+                            <field name="descrtiption"/>
+                        </group>
+                        <group>
+                            <field name="priority"/>
+                            <field name="last_change"/>
+                            <field name="status"/>
+                        </group>
+                    </group>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="zabbix_trigger_action" model="ir.actions.act_window">
+        <field name="name">zabbix trigger action</field>
+        <field name="res_model">zabbix.trigger</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="当前告警" id="zabbix_menu_trigger" action="zabbix_trigger_action" parent="zabbix_menu_root"/>
+</odoo>

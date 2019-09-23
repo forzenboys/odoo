@@ -1,0 +1,16 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_zabbix_group,zabbix_group,model_zabbix_group,,1,1,1,1
+access_zabbix_host,zabbix_host,model_zabbix_host,,1,1,1,1
+access_zabbix_item_list,zabbix_item_list,model_zabbix_item_list,,1,1,1,1
+access_zabbix_item_data,zabbix_item_data,model_zabbix_item_data,,1,1,1,1
+access_application_item,application_item,model_application_item,,1,1,1,1
+access_settings_configure,settings_configure,model_settings_configure,,1,1,1,1
+
+access_res_groups,Itsm_res_groups,model_res_groups,szoms_monitor.zabbix_manager,1,1,1,1
+access_ir_rule,Itsm_ir_rule,model_ir_rule,szoms_monitor.zabbix_manager,1,1,1,1
+access_ir_model_access,Itsm_ir_model_access,model_ir_model_access,szoms_monitor.zabbix_manager,1,1,1,1
+access_ir_module_category,Itsm_ir_module_category,model_ir_module_category,szoms_monitor.zabbix_manager,1,1,1,1
+access_ir_ui_view,Itsm_ir_ui_view,model_ir_ui_view,szoms_monitor.zabbix_manager,1,1,1,1
+access_res_partner,Itsm_res_partner,model_res_partner,szoms_monitor.zabbix_manager,1,1,1,1
+access_res_company,Itsm_res_company,model_res_company,szoms_monitor.zabbix_manager,1,1,1,1
+access_res_users,Itsm_res_users,model_res_users,szoms_monitor.zabbix_manager,1,1,1,1

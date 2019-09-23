@@ -1,0 +1,43 @@
+<odoo>
+    <data>
+        <menuitem name="监控系统" id="host_menus"/>
+
+        <record model="ir.actions.act_window" id="zabbix_group_action">
+          <field name="name">群组</field>
+          <field name="res_model">zabbix_group</field>
+          <field name="view_mode">tree</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="zabbix_host_action">
+          <field name="name">信息</field>
+          <field name="res_model">zabbix_host</field>
+          <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="zabbix_item_list_action">
+          <field name="name">监控项</field>
+          <field name="res_model">zabbix_item_list</field>
+          <field name="view_mode">tree</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="zabbix_settings_action">
+          <field name="name">后台设置</field>
+          <field name="res_model">settings_configure</field>
+          <field name="view_mode">form</field>
+        </record>
+
+        <record id="menu_action_res_users" model="ir.actions.act_window">
+            <field name="name">用户管理</field>
+            <field name="res_model">res.users</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_ids"
+               eval="[(5,0,0),(0,0,{'view_mode':'tree','view_id':ref('base.view_users_tree')}),(0,0,{'view_mode':'form','view_id':ref('base.view_users_form')})]"/>
+        </record>
+
+        <menuitem name="群组" id="zabbix_group_munus" action="zabbix_group_action" parent="host_menus"/>
+        <menuitem name="host监控信息" id="zabbix_host_munus" action="zabbix_host_action" parent="host_menus"/>
+        <menuitem name="后台设置" id="zabbix_settings_parent_munus"  parent="host_menus" groups="szoms_monitor.zabbix_manager"/>
+        <menuitem name="配置项管理" id="zabbix_settings_munus" action="zabbix_settings_action" parent="zabbix_settings_parent_munus" groups="szoms_monitor.zabbix_manager"/>
+        <menuitem name="用户管理" id="zabbix_users_munus" action="menu_action_res_users" parent="zabbix_settings_parent_munus" groups="szoms_monitor.zabbix_manager"/>
+    </data>
+</odoo>
